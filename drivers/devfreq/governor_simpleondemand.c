@@ -65,6 +65,9 @@ static int devfreq_simple_ondemand_func(struct devfreq *df,
 		return 0;
 	}
 
+	stat.private_data = NULL;
+
+	err = df->profile->get_dev_status(df->dev.parent, &stat);
 	if (err)
 		return err;
 
